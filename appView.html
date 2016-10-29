@@ -17,11 +17,11 @@
             </form>
         </div>
         <div ng-show="displayMatches.value">
-            <table id="matches" align="center">
+            <table id="matches">
                 <tbody>
                     <tr>
                         <td><img src={{profiles[0].image}} height="149" width="120" /></td>
-                        <td style="padding : 10;">
+                        <td>
                             <table>
                                 <tr>
                                     <td>Name : {{profiles[0].name}}</td>
@@ -74,6 +74,7 @@
                 </widget-cell>
             </widget-row>
             <widget-row>
+                <h3>Previous Matches</h3>
                 <table ng-repeat="item in prevProfiles" style="float:left; width:33%; background: #2d4259;">
                     <tbody>
                         <tr align="center">
