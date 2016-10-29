@@ -1,24 +1,90 @@
-<!-- Primary template that will get shown when widget loads -->
-<script type="text/ng-template" id="highStreet40Main.html"> 
-	<widget-row ng-repeat="item in items" clickable ng-click="showDetails(item)">
-		<widget-cell fill>
-			<span class="itemName">{{item.title}}</span>
-			<span ng-repeat= "tag in item.tags" class="label label-success">
-				{{tag}}
-			</span>
-		</widget-cell>
-		<widget-cell>
-			<widget-icon name="angle-right"></widget-icon>
-		</widget-cell>
-	</widget-row>
-</script>
-
-<!-- This template gets shown when user clicks one of the items in the list -->
-<script type="text/ng-template" id="highStreet40Details.html"> 
-	<!-- 'wr' and 'wc' are short for 'widget-row' and 'widget-cell' -->
-	<wr>
-		<wc><h2>{{detailsItem.title}}</h2></wc>
-	</wr>
-	<wr><wc><span ng-repeat= "tag in detailsItem.tags" class="label label-success">{{tag}}</span></wc></wr>
-	<wr><wc><div class="pDetails">{{detailsItem.details}}</div></wc></wr>
+<script type="text/ng-template" id="highStreet40Main.html">
+    <div ng-controller="highStreet40Ctrl" id="top">
+        <div id='demographic' ng-show="displayRegistration.value">
+            <h4 class="register-title">Lets get to know each other!</h4>
+            <form id="registration" class="register">
+                <div class="register-switch">
+                    <input type="radio" name="sex" value="F" id="sex_f" class="register-switch-input">
+                    <label for="sex_f" class="register-switch-label">Female</label>
+                    <input type="radio" name="sex" value="M" id="sex_m" class="register-switch-input">
+                    <label for="sex_m" class="register-switch-label">Male</label>
+                </div>
+                <input type="text" class="register-input" placeholder="Who are you!" />
+                <input type="email" class="register-input" placeholder="More about yourself" />
+                <input type="text" class="register-input" placeholder="Tag line" />
+                <input type="text" class="register-input" placeholder="Any specific like or dislikes" />
+                <input type="submit" value="Get Started!" class="register-button" ng-click="displayRegistration.value=false; displayMatches.value=true" />
+            </form>
+        </div>
+        <div ng-show="displayMatches.value">
+            <table id="matches" align="center">
+                <tbody>
+                    <tr>
+                        <td><img src={{profiles[0].image}} height="149" width="120" /></td>
+                        <td>
+                            <table>
+                                <tr>
+                                    <td>Name : {{profiles[0].name}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Age : {{profiles[0].age}}</td>
+                                </tr>
+                                <tr>
+                                    <td>Bio : {{profiles[0].tag}}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <button id="accept" ng-click="remove(profiles, $index)">Accept</button>
+                                        <button id="reject" ng-click="remove(profiles, $index)">Decline</button>
+                                        <button id="skip" ng-click="remove(profiles, $index)">Skip</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div id="final" ng-show="displayFinal.value" align="center">
+            <h3>Hey, You got a WATConnect</h3>
+            <widget-row ng-repeat="item in profs">
+                <widget-cell fill>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <th rowspan="4"><img ng-src="{{item.userurl}}" height="100" width="100" /></th>
+                                <td>Name: {{item.username}}</td>
+                            </tr>
+                            <tr>
+                                <td>Age: {{item.age}}</td>
+                            </tr>
+                            <tr>
+                                <td>Bio: {{item.bio}}</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <button formaction="{{item.connect}}">Connect</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </widget-cell>
+                <widget-cell>
+                    <widget-icon name="angle-right"></widget-icon>
+                </widget-cell>
+            </widget-row>
+            <h3>Previous Matches</h3>
+            <table cellspacing="100">
+                <tbody>
+                    <tr align="center">
+                        <td body-spacing="50" ng-repeat="item in prevProfiles" >
+                            <img ng-src="{{item.userurl}}" height="50" width="50" />
+                            <p>{{item.username}}<br/>
+                            <img height="15" width="15" src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/hot-icon.png"/> 
+                            {{item.wathot}}</p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
 </script>
