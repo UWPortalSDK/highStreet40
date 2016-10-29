@@ -4,13 +4,13 @@ angular.module('portalApp')
         $scope.portalHelpers.showView("highStreet40Main.html", 1);
 
         $scope.displayRegistration = {
-            value: false
+            value: true
         };
         $scope.displayMatches = {
             value: false
         };
         $scope.displayFinal = {
-            value: true
+            value: false
         };
         $scope.profiles = [{
             "name": "Rose",

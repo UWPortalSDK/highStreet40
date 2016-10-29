@@ -217,4 +217,8 @@ td{
 
 #final{
     color : white;
-    
+}
+
+#finalTable{
+    border-spacing : 20;
+}

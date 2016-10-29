@@ -74,13 +74,13 @@
                 </widget-cell>
             </widget-row>
             <h3>Previous Matches</h3>
-            <table cellspacing="100">
+            <table id="finalTable">
                 <tbody>
                     <tr align="center">
-                        <td body-spacing="50" ng-repeat="item in prevProfiles" >
+                        <td ng-repeat="item in prevProfiles">
                             <img ng-src="{{item.userurl}}" height="50" width="50" />
                             <p>{{item.username}}<br/>
-                            <img height="15" width="15" src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/hot-icon.png"/> 
+                            <img height="18" width="15" src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/hot-icon.png"/> 
                             {{item.wathot}}</p>
                         </td>
                     </tr>
