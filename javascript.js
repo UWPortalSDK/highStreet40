@@ -57,7 +57,7 @@ angular.module('portalApp')
             userurl: "https://randomuser.me/api/portraits/lego/5.jpg",
             skipped: "No",
             age: "22",
-            bio: "Lorem ipsum",
+            bio: "I am smart and I like GoT",
             connect: "https:///"
         }];
         $scope.prevProfiles = [{

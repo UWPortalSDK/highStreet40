@@ -21,7 +21,7 @@
                 <tbody>
                     <tr>
                         <td><img src={{profiles[0].image}} height="149" width="120" /></td>
-                        <td>
+                        <td style="padding : 10;">
                             <table>
                                 <tr>
                                     <td>Name : {{profiles[0].name}}</td>
@@ -34,9 +34,9 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <button id="accept" ng-click="remove(profiles, $index)">Accept</button>
-                                        <button id="reject" ng-click="remove(profiles, $index)">Decline</button>
-                                        <button id="skip" ng-click="remove(profiles, $index)">Skip</button>
+                                        <button id="accept" class="connectButton" ng-click="remove(profiles, $index)">Accept</button>
+                                        <button id="reject" class="connectButton" ng-click="remove(profiles, $index)">Decline</button>
+                                        <button id="skip" class="connectButton" ng-click="remove(profiles, $index)">Skip</button>
                                     </td>
                                 </tr>
                             </table>
@@ -56,14 +56,14 @@
                                 <td>Name: {{item.username}}</td>
                             </tr>
                             <tr>
-                                <td>Age: {{item.age}}</td>
+                                <td style="padding-right:10px">Age: {{item.age}}</td>
                             </tr>
                             <tr>
-                                <td>Bio: {{item.bio}}</td>
+                                <td style="padding-right:10px">Bio: {{item.bio}}</td>
                             </tr>
                             <tr>
-                                <td>
-                                    <button formaction="{{item.connect}}">Connect</button>
+                                <td style="padding-right:10px">
+                                    <button class="connectButton" formaction="{{item.connect}}">Connect</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -73,18 +73,20 @@
                     <widget-icon name="angle-right"></widget-icon>
                 </widget-cell>
             </widget-row>
-            <h3>Previous Matches</h3>
-            <table>
-                <tbody>
-                    <tr align="center">
-                        <td ng-repeat="item in prevProfiles">
-                            <img ng-src="{{item.userurl}}" height="50" width="50" />
-                            <p>{{item.username}}<br/>
-                            <img height="18" width="15" src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/hot-icon.png"/> 
-                            {{item.wathot}}</p>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            <widget-row>
+                <table ng-repeat="item in prevProfiles" style="float:left; width:33%; background: #2d4259;">
+                    <tbody>
+                        <tr align="center">
+                            <td>
+                                <img ng-src="{{item.userurl}}" height="50" width="50" />
+                                <p>{{item.username}}
+                                    <br/>
+                                    <img height="18" width="15" src="http://icons.iconarchive.com/icons/custom-icon-design/pretty-office-11/256/hot-icon.png" /> {{item.wathot}}
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </widget-row>
         </div>
 </script>
